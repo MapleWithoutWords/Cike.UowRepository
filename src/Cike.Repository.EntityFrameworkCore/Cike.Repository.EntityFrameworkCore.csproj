@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="../../common.props" />
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Title>Cike.Repository.EntityFrameworkCore</Title>
+		<LangVersion>$(LangVersion)</LangVersion>
+		<Version>$(Version)</Version>
+		<Authors>$(Authors)</Authors>
+		<Company>$(Company)</Company>
+		<PackageProjectUrl>$(PackageProjectUrl)</PackageProjectUrl>
+		<PackageIcon>$(PackageIcon)</PackageIcon>
+		<RepositoryUrl>$(RepositoryUrl)</RepositoryUrl>
+		<RepositoryType>$(RepositoryType)</RepositoryType>
+		<Description>$(Description)</Description>
+		<PackageLicenseFile>$(PackageLicenseFile)</PackageLicenseFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Cike.Repository\Cike.Repository.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B41E8CC1-9C55-4C0D-B34C-68EC052AC27E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3DD5C26E-318D-43E9-B30F-57452B53B85A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution items", "solution items", "{C4296A5D-9FE0-4A29-BC4A-7B9EF2DF9BD5}"
+	ProjectSection(SolutionItems) = preProject
+		common.props = common.props
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cike.UnitOfWork", "src\Cike.UnitOfWork\Cike.UnitOfWork.csproj", "{90FBBB5E-0824-4846-9697-F45C975E4AC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cike.Repository", "src\Cike.Repository\Cike.Repository.csproj", "{00651EA5-45CC-42D8-9CE4-59B9051B9526}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cike.Repository.EntityFrameworkCore", "src\Cike.Repository.EntityFrameworkCore\Cike.Repository.EntityFrameworkCore.csproj", "{8237C7AD-B613-4A5A-9D2F-A8359ED2FCE2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90FBBB5E-0824-4846-9697-F45C975E4AC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90FBBB5E-0824-4846-9697-F45C975E4AC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90FBBB5E-0824-4846-9697-F45C975E4AC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90FBBB5E-0824-4846-9697-F45C975E4AC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00651EA5-45CC-42D8-9CE4-59B9051B9526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00651EA5-45CC-42D8-9CE4-59B9051B9526}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00651EA5-45CC-42D8-9CE4-59B9051B9526}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00651EA5-45CC-42D8-9CE4-59B9051B9526}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8237C7AD-B613-4A5A-9D2F-A8359ED2FCE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8237C7AD-B613-4A5A-9D2F-A8359ED2FCE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8237C7AD-B613-4A5A-9D2F-A8359ED2FCE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8237C7AD-B613-4A5A-9D2F-A8359ED2FCE2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{90FBBB5E-0824-4846-9697-F45C975E4AC6} = {B41E8CC1-9C55-4C0D-B34C-68EC052AC27E}
+		{00651EA5-45CC-42D8-9CE4-59B9051B9526} = {B41E8CC1-9C55-4C0D-B34C-68EC052AC27E}
+		{8237C7AD-B613-4A5A-9D2F-A8359ED2FCE2} = {B41E8CC1-9C55-4C0D-B34C-68EC052AC27E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {17955C77-6B7A-4066-A3B5-6A6831E6E443}
+	EndGlobalSection
+EndGlobal
