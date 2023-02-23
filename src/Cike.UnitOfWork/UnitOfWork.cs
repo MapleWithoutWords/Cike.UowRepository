@@ -11,42 +11,87 @@ namespace Cike.UnitOfWork
     public class UnitOfWork : IUnitOfWork
     {
         protected IDictionary<string, IUnitOfWorkTranscationApi> _uowTranscationApis;
-        protected UnitOfWorkOptions _unitOfWorkOptions;
 
         public UnitOfWork(IOptions<UnitOfWorkOptions> options)
         {
             _uowTranscationApis = new ConcurrentDictionary<string, IUnitOfWorkTranscationApi>();
-            _unitOfWorkOptions = options.Value;
+            Options = options.Value;
         }
 
-        public void AddDatabaseApi(string key, IUnitOfWorkTranscationApi api)
+        public UnitOfWorkOptions Options { get; set; }
+        public void SetOptions(UnitOfWorkOptions options)
         {
-            throw new NotImplementedException();
+            if (options == null)
+            {
+                return;
+            }
+            Options?.Normalize(options);
         }
 
-        public Task CommitAsync()
+        public void AddUowTranscationApi(string key, IUnitOfWorkTranscationApi api)
         {
-            throw new NotImplementedException();
+            if (FindUowTranscationApi(key) != null)
+            {
+                throw new ArgumentException($"There are key = '{key}' IUnitOfWorkTranscationApi object.");
+            }
+            _uowTranscationApis[key] = api;
         }
 
-        public IUnitOfWorkTranscationApi FindDatabaseApi(string key)
+        public async Task CommitAsync()
         {
-            throw new NotImplementedException();
+            await SaveChangesAsync();
+
+            //publish event
+
+            foreach (var item in _uowTranscationApis)
+            {
+                await item.Value.CommitAsync();
+            }
         }
 
-        public IUnitOfWorkTranscationApi GetOrAddDatabaseApi(string key, Func<IUnitOfWorkTranscationApi> factory)
+        public void Dispose()
         {
-            throw new NotImplementedException();
+            foreach (var item in _uowTranscationApis)
+            {
+                item.Value?.Dispose();
+            }
         }
 
-        public Task RollbackAsync()
+        public IUnitOfWorkTranscationApi FindUowTranscationApi(string key)
         {
-            throw new NotImplementedException();
+            if (_uowTranscationApis.ContainsKey(key))
+            {
+                return _uowTranscationApis[key];
+            }
+            return null;
         }
 
-        public Task SaveChangesAsync()
+        public IUnitOfWorkTranscationApi GetOrAddUowTranscationApi(string key, Func<IUnitOfWorkTranscationApi> factory)
         {
-            throw new NotImplementedException();
+            var result = FindUowTranscationApi(key);
+            if (result == null)
+            {
+                result = factory.Invoke();
+                AddUowTranscationApi(key, result);
+            }
+            return result;
+        }
+
+
+        public async Task RollbackAsync()
+        {
+            foreach (var item in _uowTranscationApis)
+            {
+                await item.Value.RollbackAsync();
+            }
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            foreach (var item in _uowTranscationApis)
+            {
+                await item.Value.SaveChangesAsync();
+            }
         }
     }
 }

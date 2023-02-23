@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cike.UnitOfWork
 {
-    public interface IUnitOfWorkTranscationApi
+    public interface IUnitOfWorkTranscationApi : IDisposable
     {
         public Task SaveChangesAsync(CancellationToken cancellationToken = default);
         public Task CommitAsync();

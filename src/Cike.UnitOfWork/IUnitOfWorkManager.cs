@@ -4,7 +4,6 @@
     {
         public IUnitOfWork CurrentUnitOfWork { get; }
 
-        public IUnitOfWork Create();
-        public IUnitOfWork Create(UnitOfWorkOptions unitOfWorkOptions);
+        public IUnitOfWork Create(UnitOfWorkOptions unitOfWorkOptions = null);
     }
 }
